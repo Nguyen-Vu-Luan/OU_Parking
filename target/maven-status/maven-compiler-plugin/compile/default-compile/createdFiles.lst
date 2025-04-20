@@ -1,0 +1,15 @@
+com\gr5\configs\DispatcherServletInit.class
+com\gr5\ou_parking\JakartaRestConfiguration.class
+com\gr5\ou_parking\resources\JakartaEE11Resource.class
+com\gr5\configs\WebAppContextConfigs.class
+com\gr5\pojo\Notifications.class
+com\gr5\pojo\Reservations.class
+com\gr5\controllers\IndexController.class
+com\gr5\pojo\Payments.class
+com\gr5\pojo\ParkingLots.class
+com\gr5\configs\HibernateConfig.class
+com\gr5\pojo\Users.class
+com\gr5\pojo\Reviews.class
+com\gr5\configs\ThymeleafConfig.class
+com\gr5\pojo\ParkingSlots.class
+com\gr5\pojo\VehicleInfo.class

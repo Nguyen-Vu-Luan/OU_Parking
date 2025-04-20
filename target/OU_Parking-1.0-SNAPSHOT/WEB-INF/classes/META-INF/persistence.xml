@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="my_persistence_unit">
+    <class>com.gr5.pojo.Reservations</class>
+    <class>com.gr5.pojo.ParkingSlots</class>
+    <class>com.gr5.pojo.ParkingLots</class>
+    <class>com.gr5.pojo.Payments</class>
+    <class>com.gr5.pojo.VehicleInfo</class>
+    <class>com.gr5.pojo.Users</class>
+    <class>com.gr5.pojo.Reviews</class>
+    <class>com.gr5.pojo.Notifications</class>
+  </persistence-unit>
+</persistence>
