@@ -33,7 +33,8 @@ import java.util.Set;
     @NamedQuery(name = "ParkingLots.findById", query = "SELECT p FROM ParkingLots p WHERE p.id = :id"),
     @NamedQuery(name = "ParkingLots.findByName", query = "SELECT p FROM ParkingLots p WHERE p.name = :name"),
     @NamedQuery(name = "ParkingLots.findByTotalSlots", query = "SELECT p FROM ParkingLots p WHERE p.totalSlots = :totalSlots"),
-    @NamedQuery(name = "ParkingLots.findByPricePerHour", query = "SELECT p FROM ParkingLots p WHERE p.pricePerHour = :pricePerHour")})
+    @NamedQuery(name = "ParkingLots.findByPricePerHour", query = "SELECT p FROM ParkingLots p WHERE p.pricePerHour = :pricePerHour"),
+    @NamedQuery(name = "ParkingLots.findByImage", query = "SELECT p FROM ParkingLots p WHERE p.image = :image")})
 public class ParkingLots implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,6 +59,9 @@ public class ParkingLots implements Serializable {
     @Size(max = 65535)
     @Column(name = "amenities")
     private String amenities;
+    @Size(max = 200)
+    @Column(name = "image")
+    private String image;
     @JoinColumn(name = "created_by", referencedColumnName = "id")
     @ManyToOne
     private Users createdBy;
@@ -119,6 +123,14 @@ public class ParkingLots implements Serializable {
 
     public void setAmenities(String amenities) {
         this.amenities = amenities;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Users getCreatedBy() {

@@ -19,7 +19,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
-    "com.gr5.controllers"
+    "com.gr5.controllers",
+    "com.gr5.repositories",
+    "com.gr5.services"
 })
 public class WebAppContextConfigs implements WebMvcConfigurer{
     @Override

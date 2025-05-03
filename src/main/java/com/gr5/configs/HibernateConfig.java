@@ -24,6 +24,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @Configuration
 @PropertySource("classPath:database.properties")
 public class HibernateConfig {
+    
     @Autowired
     private Environment env;
 

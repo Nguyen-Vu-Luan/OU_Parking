@@ -8,6 +8,7 @@ import com.gr5.pojo.ParkingLots;
 import com.gr5.repositories.ParkingLotRepository;
 import com.gr5.services.ParkingLotService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ import org.springframework.stereotype.Service;
 public class ParkingLotServiceImpl implements ParkingLotService{
     @Autowired
     private ParkingLotRepository lotRepo;
+
+    @Override
+    public List<ParkingLots> getLots(Map<String, String> params) {
+        return this.lotRepo.getLots(params);
+    }
 
     @Override
     public List<ParkingLots> getLots() {

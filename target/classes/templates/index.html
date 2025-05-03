@@ -1,13 +1,51 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <header>
-        <title>Admin</title>
-        <th:block th:replace="base :: styles"></th:block>
-    </header>
-    <body>
-        <div th:replace="base :: sidebar"></div>
-        <div th:replace="base :: header"></div>
-        <h2 th:text="${msg}"></h2>
-        <div th:replace="base :: footer"></div>
-    </body>
+    <head>
+        <title>Trang Quản Trị</title>
+    <th:block th:replace="base :: bootstrap"></th:block>
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+    <main class="container">
+        <form th:action="@{/}">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" name="kw" placeholder="Tên bãi đỗ..." />
+            </div>
+            <div class="mb-3 mt-3">
+                <button class="btn btn-info" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
+        <hr  />  
+        <a th:href="@{/products}" class="btn btn-info mt-2">Thêm Bãi đỗ</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <!--                    <th></th>-->
+                    <th>Mã bãi đỗ</th>
+                    <th>Tên bãi đỗ</th>
+                    <th>Giá theo giờ</th>
+                    <th>Tổng chỗ đỗ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pl: ${ParkingLots}">
+                    <!--                    <td>
+                                            <img th:src="${p.image}" width="200" />
+                                        </td>-->
+                    <td th:text="${pl.id}"></td>
+                    <td th:text="${pl.name}"></td>
+                    <td th:text="${pl.pricePerHour + ' VNĐ'}"></td>
+                    <td th:text="${pl.totalSlots}"></td>
+                    <td>
+                        <button class="btn btn-danger">&times;</button>
+                        <a href="#" class="btn btn-success">&#128296;️</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <div th:replace="base :: footer"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
 </html>

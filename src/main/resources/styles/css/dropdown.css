@@ -1,0 +1,26 @@
+/* CSS cho menu dropdown */
+.dropdown-menu {
+    display: none; /* Ẩn mặc định */
+    flex-direction: row; /* Hiển thị các mục theo chiều ngang */
+    position: absolute; /* Đặt vị trí dưới nút "Quản lý" */
+    top: 100%; /* Căn chỉnh ngay dưới nút dropdown */
+    left: 0;
+    background-color: #343a40; /* Màu nền tối */
+    border: none;
+    padding: 0;
+}
+
+.dropdown:hover .dropdown-menu,
+#adminDropdown:focus + .dropdown-menu {
+    display: flex; /* Hiển thị khi nhấn hoặc hover vào dropdown */
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #fff; /* Màu chữ */
+    text-align: center; /* Canh giữa */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng khi hover */
+}

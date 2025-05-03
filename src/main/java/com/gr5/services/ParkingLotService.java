@@ -6,11 +6,14 @@ package com.gr5.services;
 
 import com.gr5.pojo.ParkingLots;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author luann
  */
+
 public interface ParkingLotService {
     List<ParkingLots> getLots();
+    List<ParkingLots> getLots(Map<String, String> params);
 }

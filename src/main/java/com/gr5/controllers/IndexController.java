@@ -4,20 +4,35 @@
  */
 package com.gr5.controllers;
 
+import com.gr5.services.ParkingLotService;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  * @author luann
  */
 @Controller
+@ControllerAdvice
 public class IndexController {
-
-    @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("msg", "Hello OU");
+    @Autowired
+    private ParkingLotService parkingLotService;
+    
+    @ModelAttribute
+    public void commonResponse(Model model) {
+        model.addAttribute("ParkingLots", this.parkingLotService.getLots());
+    }
+    
+   @RequestMapping("/")
+    public String index(Model model, @RequestParam Map<String, String> params) {
+        // Lấy danh sách bãi đỗ xe từ ParkingLotService
+        model.addAttribute("ParkingLots", this.parkingLotService.getLots(params));        
         return "index";
     }
 }
