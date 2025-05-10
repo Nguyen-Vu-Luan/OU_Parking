@@ -30,7 +30,8 @@ import java.util.Set;
     @NamedQuery(name = "ParkingSlots.findAll", query = "SELECT p FROM ParkingSlots p"),
     @NamedQuery(name = "ParkingSlots.findById", query = "SELECT p FROM ParkingSlots p WHERE p.id = :id"),
     @NamedQuery(name = "ParkingSlots.findBySlotNumber", query = "SELECT p FROM ParkingSlots p WHERE p.slotNumber = :slotNumber"),
-    @NamedQuery(name = "ParkingSlots.findByStatus", query = "SELECT p FROM ParkingSlots p WHERE p.status = :status")})
+    @NamedQuery(name = "ParkingSlots.findByStatus", query = "SELECT p FROM ParkingSlots p WHERE p.status = :status"),
+    @NamedQuery(name = "ParkingSlots.findByImage", query = "SELECT p FROM ParkingSlots p WHERE p.image = :image")})
 public class ParkingSlots implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +46,9 @@ public class ParkingSlots implements Serializable {
     @Size(max = 11)
     @Column(name = "status")
     private String status;
+    @Size(max = 255)
+    @Column(name = "image")
+    private String image;
     @OneToMany(mappedBy = "slotId")
     private Set<Reservations> reservationsSet;
     @JoinColumn(name = "lot_id", referencedColumnName = "id")
@@ -80,6 +84,14 @@ public class ParkingSlots implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Set<Reservations> getReservationsSet() {

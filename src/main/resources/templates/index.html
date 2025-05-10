@@ -1,12 +1,14 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Trang Quản Trị</title>
+        <title>Quản lý bãi đỗ</title>
     <th:block th:replace="base :: bootstrap"></th:block>
 </head>
 <body>
     <div th:replace="base :: header"></div>
+
     <main class="container">
+
         <form th:action="@{/}">
             <div class="mb-3 mt-3">
                 <input type="text" class="form-control" name="kw" placeholder="Tên bãi đỗ..." />
@@ -15,8 +17,9 @@
                 <button class="btn btn-info" type="submit">Tìm kiếm</button>
             </div>
         </form>
+        <p th:if="${message}" th:text="${message}" style="color:red;"></p>
         <hr  />  
-        <a th:href="@{/products}" class="btn btn-info mt-2">Thêm Bãi đỗ</a>
+        <a th:href="@{/parkingLot}" class="btn btn-info mt-2">Thêm bãi đỗ</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -37,15 +40,22 @@
                     <td th:text="${pl.name}"></td>
                     <td th:text="${pl.pricePerHour + ' VNĐ'}"></td>
                     <td th:text="${pl.totalSlots}"></td>
-                    <td>
-                        <button class="btn btn-danger">&times;</button>
-                        <a href="#" class="btn btn-success">&#128296;️</a>
+                    <td class="text-end">
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <a href="#" class="btn btn-success">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a th:href="@{'/slot?parkinglotId=' + ${pl.id}}" class="btn btn-info">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </main>
+
     <div th:replace="base :: footer"></div>
-    <script th:src="@{/js/main.js}"></script>
 </body>
 </html>

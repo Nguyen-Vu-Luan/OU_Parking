@@ -1,4 +1,4 @@
-function deleteProduct(endpoint, id) {
+function deleteParkingLot(endpoint, id) {
     if (confirm("Bạn chắc chắn xóa không?") === true) { 
         fetch(endpoint + id, {
             method: "delete"

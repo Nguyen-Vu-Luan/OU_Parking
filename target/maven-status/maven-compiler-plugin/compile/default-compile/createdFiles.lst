@@ -2,6 +2,7 @@ com\gr5\configs\DispatcherServletInit.class
 com\gr5\repositories\impl\ParkingLotRepositoryImpl.class
 com\gr5\ou_parking\resources\JakartaEE11Resource.class
 com\gr5\services\impl\ParkingLotServiceImpl.class
+com\gr5\repositories\impl\ParkingSlotRepositoryImpl.class
 com\gr5\repositories\ParkingSlotRepository.class
 com\gr5\configs\HibernateConfig.class
 com\gr5\services\ParkingLotService.class
@@ -12,9 +13,14 @@ com\gr5\configs\WebAppContextConfigs.class
 com\gr5\pojo\Notifications.class
 com\gr5\repositories\ParkingLotRepository.class
 com\gr5\pojo\Reservations.class
+com\gr5\services\ParkingSlotService.class
 com\gr5\controllers\IndexController.class
+com\gr5\controllers\ParkingSlotController.class
 com\gr5\pojo\Payments.class
 com\gr5\pojo\ParkingLots.class
 com\gr5\pojo\Users.class
+com\gr5\controllers\SlotController.class
+com\gr5\controllers\ParkingLotController.class
 com\gr5\pojo\Reviews.class
 com\gr5\pojo\ParkingSlots.class
+com\gr5\services\impl\ParkingSlotServiceImpl.class

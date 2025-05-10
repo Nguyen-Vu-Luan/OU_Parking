@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thêm chỗ đỗ</title>
+    <th:block th:replace="base :: bootstrap"></th:block>
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+
+    <main class="container">
+        <h1 class="text-center text-info mt-1">THÊM CHỖ ĐỖ</h1>
+
+        <form th:action="@{/}">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Vị trí..." />
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Tình trạng..." />
+            </div>
+            <div class="mb-3 mt-3">
+                <select class="form-select">
+                    <option th:each="pl:${ParkingLots}" pl:value="${pl.id}" th:text="${pl.name}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm chỗ đỗ</button>
+        </form>
+    </main>
+
+    <div th:replace="base :: footer"></div>
+</body>
+</html>

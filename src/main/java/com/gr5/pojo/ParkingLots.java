@@ -19,7 +19,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Set;
 
 /**
@@ -52,9 +51,8 @@ public class ParkingLots implements Serializable {
     private String address;
     @Column(name = "total_slots")
     private Integer totalSlots;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "price_per_hour")
-    private BigDecimal pricePerHour;
+    private Long pricePerHour;
     @Lob
     @Size(max = 65535)
     @Column(name = "amenities")
@@ -109,11 +107,11 @@ public class ParkingLots implements Serializable {
         this.totalSlots = totalSlots;
     }
 
-    public BigDecimal getPricePerHour() {
+    public Long getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(BigDecimal pricePerHour) {
+    public void setPricePerHour(Long pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 

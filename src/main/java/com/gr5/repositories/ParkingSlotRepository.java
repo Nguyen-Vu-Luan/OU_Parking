@@ -6,12 +6,12 @@ package com.gr5.repositories;
 
 import com.gr5.pojo.ParkingSlots;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author luann
  */
 public interface ParkingSlotRepository {
-    List<ParkingSlots> getSlots(Map<String, String> params);
+    List<ParkingSlots> getAllSlots();
+    public List<ParkingSlots> getSlotsByLot(Long lotId);
 }

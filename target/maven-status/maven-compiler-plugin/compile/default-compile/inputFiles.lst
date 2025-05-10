@@ -3,6 +3,9 @@ D:\OU_Parking\src\main\java\com\gr5\configs\HibernateConfig.java
 D:\OU_Parking\src\main\java\com\gr5\configs\ThymeleafConfig.java
 D:\OU_Parking\src\main\java\com\gr5\configs\WebAppContextConfigs.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\IndexController.java
+D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingLotController.java
+D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingSlotController.java
+D:\OU_Parking\src\main\java\com\gr5\controllers\SlotController.java
 D:\OU_Parking\src\main\java\com\gr5\ou_parking\JakartaRestConfiguration.java
 D:\OU_Parking\src\main\java\com\gr5\ou_parking\resources\JakartaEE11Resource.java
 D:\OU_Parking\src\main\java\com\gr5\pojo\Notifications.java
@@ -18,4 +21,6 @@ D:\OU_Parking\src\main\java\com\gr5\repositories\impl\ParkingSlotRepositoryImpl.
 D:\OU_Parking\src\main\java\com\gr5\repositories\ParkingLotRepository.java
 D:\OU_Parking\src\main\java\com\gr5\repositories\ParkingSlotRepository.java
 D:\OU_Parking\src\main\java\com\gr5\services\impl\ParkingLotServiceImpl.java
+D:\OU_Parking\src\main\java\com\gr5\services\impl\ParkingSlotServiceImpl.java
 D:\OU_Parking\src\main\java\com\gr5\services\ParkingLotService.java
+D:\OU_Parking\src\main\java\com\gr5\services\ParkingSlotService.java
