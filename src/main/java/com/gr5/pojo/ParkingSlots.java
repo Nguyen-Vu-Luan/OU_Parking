@@ -16,9 +16,11 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Set;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -54,6 +56,8 @@ public class ParkingSlots implements Serializable {
     @JoinColumn(name = "lot_id", referencedColumnName = "id")
     @ManyToOne
     private ParkingLots lotId;
+    @Transient
+    private MultipartFile file;
 
     public ParkingSlots() {
     }
@@ -133,6 +137,20 @@ public class ParkingSlots implements Serializable {
     @Override
     public String toString() {
         return "com.gr5.pojo.ParkingSlots[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
     
 }

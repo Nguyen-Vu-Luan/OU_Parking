@@ -26,11 +26,6 @@ public class IndexController {
     @Autowired
     private ParkingLotService parkingLotService;
 
-    @ModelAttribute
-    public void commonResponse(Model model) {
-        model.addAttribute("ParkingLots", this.parkingLotService.getLots());
-    }
-
     @RequestMapping("/")
     public String index(@RequestParam(value = "kw", required = false) String kw, Model model) {
         List<ParkingLots> parkingLots;

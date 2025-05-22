@@ -33,23 +33,36 @@ public class ParkingSlotRepositoryImpl implements ParkingSlotRepository {
     }
 
     @Override
-    public List<ParkingSlots> getSlotsByLot(Long lotId) {
-        Session session = this.factory.getObject().getCurrentSession();
-        Query query = session.createQuery("FROM ParkingSlots ps JOIN FETCH ps.lot WHERE ps.lot.id = :lotId", ParkingSlots.class);
-        query.setParameter("lotId", lotId);
+    public List<ParkingSlots> getSlotByLotID(Long parkinglotId){
+        Session s = this.factory.getObject().getCurrentSession();
+        Query query = s.createQuery("FROM ParkingSlots WHERE lotId.id = :parkinglotId", ParkingSlots.class);
+        query.setParameter("parkinglotId", parkinglotId);
         return query.getResultList();
     }
+    
+    @Override
+    public ParkingSlots addOrUpdateParkingSlot(ParkingSlots p) {
+        Session s = this.factory.getObject().getCurrentSession();
+        if (p.getId() == null) {
+            s.persist(p);
+        } else {
+            s.merge(p);
+        }
 
-//    public List<ParkingSlots> getSlotByLotID(Long lotId){
-//        Session s = this.factory.getObject().getCurrentSession();
-//        Query query = s.createQuery("FROM ParkingSlots WHERE lotId = :lotId", ParkingSlots.class);
-//        query.setParameter("lotId", lotId);
-//        return query.getResultList();
-//    }
-//    public void addSlot(ParkingSlots slot){
-//        Session s = this.factory.getObject().getCurrentSession();
-//        Transaction tx = s.beginTransaction();
-//        s.save(slot);
-//        tx.commit();
-//    }
+        return p;
+    }
+    
+    @Override
+    public ParkingSlots getParkingSlotById(Long id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(ParkingSlots.class, id);
+
+    }
+    
+    @Override
+    public void deleleParkingSlot(Long id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        ParkingSlots p = this.getParkingSlotById(id);
+        s.remove(p);
+    }
 }

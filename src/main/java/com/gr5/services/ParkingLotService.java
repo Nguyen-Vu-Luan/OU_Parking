@@ -15,4 +15,7 @@ import java.util.List;
 public interface ParkingLotService {
     List<ParkingLots> getLots();
     List<ParkingLots> findParkingLotsByKeyWord(String kw);
+    ParkingLots addOrUpdateParkingLot(ParkingLots p);
+    ParkingLots getParkingLotById(Long id);
+    void deleleParkingLot(Long id);
 }

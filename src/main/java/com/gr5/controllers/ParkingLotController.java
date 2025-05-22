@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -29,8 +30,17 @@ public class ParkingLotController {
         return "parkingLot"; 
     }
     
-    @PostMapping("/add")
-    public String add(@ModelAttribute(value = "ParkingLots") ParkingLots pl) {
+    @GetMapping("/parkingLot/{parkingLotId}")
+    public String updateView(Model model, @PathVariable(value = "parkingLotId") Long id) {
+        model.addAttribute("ParkingLots", this.parkingLotService.getParkingLotById(id));
+        return "parkingLot";
+    }
+    
+    @PostMapping("/addpl")
+    public String addpl(@ModelAttribute(value = "ParkingLots") ParkingLots pl) {
+        this.parkingLotService.addOrUpdateParkingLot(pl);
         return "redirect:/";
     }
+    
+    
 }

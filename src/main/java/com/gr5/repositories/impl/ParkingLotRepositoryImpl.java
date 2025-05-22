@@ -54,30 +54,29 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         return session.createQuery(query).getResultList();
     }
 
-//    @Override
-//    public ParkingLots getParkingLotById(int id) {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        return s.get(ParkingLots.class, id);
-//
-//    }
-//
-//    @Override
-//    public ParkingLots addOrUpdateParkingLot(ParkingLots p) {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        if (p.getId() == null) {
-//            s.persist(p);
-//        } else {
-//            s.merge(p);
-//        }
-//
-//        return p;
-//
-//    }
-//
-//    @Override
-//    public void deleleParkingLot(int id) {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        ParkingLots p = this.getParkingLotById(id);
-//        s.remove(p);
-//    }
+    @Override
+    public ParkingLots getParkingLotById(Long id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(ParkingLots.class, id);
+
+    }
+
+    @Override
+    public ParkingLots addOrUpdateParkingLot(ParkingLots p) {
+        Session s = this.factory.getObject().getCurrentSession();
+        if (p.getId() == null) {
+            s.persist(p);
+        } else {
+            s.merge(p);
+        }
+
+        return p;
+    }
+
+    @Override
+    public void deleleParkingLot(Long id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        ParkingLots p = this.getParkingLotById(id);
+        s.remove(p);
+    }
 }

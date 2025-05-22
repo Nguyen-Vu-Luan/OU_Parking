@@ -9,10 +9,13 @@ com\gr5\services\ParkingLotService.class
 com\gr5\configs\ThymeleafConfig.class
 com\gr5\pojo\VehicleInfo.class
 com\gr5\ou_parking\JakartaRestConfiguration.class
+com\gr5\controllers\ApiParkingLotController.class
 com\gr5\configs\WebAppContextConfigs.class
 com\gr5\pojo\Notifications.class
 com\gr5\repositories\ParkingLotRepository.class
 com\gr5\pojo\Reservations.class
+com\gr5\controllers\ApiParkingSlotController.class
+com\gr5\formatters\ParkingSlotFormatter.class
 com\gr5\services\ParkingSlotService.class
 com\gr5\controllers\IndexController.class
 com\gr5\controllers\ParkingSlotController.class
@@ -23,4 +26,5 @@ com\gr5\controllers\SlotController.class
 com\gr5\controllers\ParkingLotController.class
 com\gr5\pojo\Reviews.class
 com\gr5\pojo\ParkingSlots.class
+com\gr5\formatters\ParkingLotFormatter.class
 com\gr5\services\impl\ParkingSlotServiceImpl.class

@@ -68,8 +68,6 @@ public class Users implements Serializable {
     @Size(max = 200)
     @Column(name = "avatar")
     private String avatar;
-    @OneToMany(mappedBy = "createdBy")
-    private Set<ParkingLots> parkingLotsSet;
     @OneToMany(mappedBy = "userId")
     private Set<Reservations> reservationsSet;
     @OneToMany(mappedBy = "userId")
@@ -148,14 +146,6 @@ public class Users implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public Set<ParkingLots> getParkingLotsSet() {
-        return parkingLotsSet;
-    }
-
-    public void setParkingLotsSet(Set<ParkingLots> parkingLotsSet) {
-        this.parkingLotsSet = parkingLotsSet;
     }
 
     public Set<Reservations> getReservationsSet() {

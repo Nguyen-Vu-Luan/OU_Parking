@@ -41,10 +41,11 @@
                     <td th:text="${pl.pricePerHour + ' VNĐ'}"></td>
                     <td th:text="${pl.totalSlots}"></td>
                     <td class="text-end">
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" 
+                                th:onclick="'deleteParkingLot(\''+@{/api/}+ '\',' +${pl.id}+')'">
                             <i class="fas fa-trash-alt"></i>
                         </button>
-                        <a href="#" class="btn btn-success">
+                        <a th:href="@{'/parkingLot/' + ${pl.id}}" class="btn btn-success">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a th:href="@{'/slot?parkinglotId=' + ${pl.id}}" class="btn btn-info">
@@ -57,5 +58,6 @@
     </main>
 
     <div th:replace="base :: footer"></div>
+    <script th:src="@{/js/main.js}"></script>
 </body>
 </html>

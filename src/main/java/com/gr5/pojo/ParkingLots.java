@@ -10,16 +10,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Set;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -60,14 +60,13 @@ public class ParkingLots implements Serializable {
     @Size(max = 200)
     @Column(name = "image")
     private String image;
-    @JoinColumn(name = "created_by", referencedColumnName = "id")
-    @ManyToOne
-    private Users createdBy;
     @OneToMany(mappedBy = "lotId")
     private Set<Reviews> reviewsSet;
     @OneToMany(mappedBy = "lotId")
     private Set<ParkingSlots> parkingSlotsSet;
-
+    @Transient
+    private MultipartFile file;
+    
     public ParkingLots() {
     }
 
@@ -131,14 +130,6 @@ public class ParkingLots implements Serializable {
         this.image = image;
     }
 
-    public Users getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Users createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public Set<Reviews> getReviewsSet() {
         return reviewsSet;
     }
@@ -178,6 +169,20 @@ public class ParkingLots implements Serializable {
     @Override
     public String toString() {
         return "com.gr5.pojo.ParkingLots[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
     
 }

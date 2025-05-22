@@ -1,33 +1,46 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Thêm bãi đỗ</title>
+        <title>Quản lý bãi đỗ</title>
     <th:block th:replace="base :: bootstrap"></th:block>
 </head>
 <body>
     <div th:replace="base :: header"></div>
 
     <main class="container">
-        <h1 class="text-center text-info mt-1">THÊM BÃI ĐỖ</h1>
+        <h1 class="text-center text-info mt-1">QUẢN LÝ BÃI ĐỖ</h1>
 
-        <form th:action="@{/}">
-            <div class="mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Tên bãi đỗ..." />
+        <form th:action="@{/addpl}" th:object="${ParkingLots}" method="post" enctype="multipart/form-data">
+            <div class="mb-3 mt-3 form-floating">
+                <input type="text" class="form-control" placeholder="Tên bãi đỗ..." th:field="*{name}"/>
+                <label for="name" class="form-label">Tên bãi đỗ </label>
             </div>
-            <div class="mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Địa chỉ..." />
+            <div class="mb-3 mt-3 form-floating">
+                <input type="text" class="form-control" placeholder="Địa chỉ..." th:field="*{address}"/>
+                <label for="address" class="form-label">Địa chỉ </label>
             </div>
-            <div class="mb-3 mt-3">
-                <input type="number" class="form-control" placeholder="Tổng chỗ đỗ..." />
+            <div class="mb-3 mt-3 form-floating">
+                <input type="number" class="form-control" placeholder="Tổng chỗ đỗ..." th:field="*{totalSlots}"/>
+                <label for="slot" class="form-label">Tổng chỗ đỗ </label>
             </div>
-            <div class="mb-3 mt-3">
-                <input type="number" class="form-control" placeholder="Giá..." />
+            <div class="mb-3 mt-3 form-floating">
+                <input type="number" class="form-control" placeholder="Giá..." th:field="*{pricePerHour}"/>
+                <label for="price" class="form-label">Giá </label>
             </div>
-            <div class="mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Tiện ích..." />
+            <div class="mb-3 mt-3 form-floating">
+                <input type="text" class="form-control" placeholder="Tiện ích..." th:field="*{amenities}"/>
+                <label for="amenitie" class="form-label">Tiện ích </label>
             </div>
-
-            <button type="submit" class="btn btn-primary">Thêm bãi đỗ</button>
+            <div class="mb-3 mt-3 form-floating">
+                <input type="file" class="form-control" th:field="*{file}"/>
+                <label for="image" class="form-label">Ảnh bãi đỗ </label>
+                <img th:if="${ParkingLots.id != null && ParkingLots.image != null}" th:src="${ParkingLots.image}" width="200" />
+            </div>
+            
+            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" class="form-control" th:field="*{image}"  />
+            <button type="submit" class="btn btn-primary" th:if="${ParkingLots.id == null}">Thêm bãi đỗ</button>
+            <button type="submit" class="btn btn-primary" th:unless="${ParkingLots.id == null}">Cập nhật bãi đỗ</button>
         </form>
     </main>
 

@@ -13,5 +13,8 @@ import java.util.List;
  */
 public interface ParkingSlotService {
     List<ParkingSlots> getAllSlots();
-    public List<ParkingSlots> getSlotsByLot(Long lotId);
+    List<ParkingSlots> getSlotByLotID(Long parkingLotId);
+    ParkingSlots addOrUpdateParkingSlot(ParkingSlots p);
+    ParkingSlots getParkingSlotById(Long id);
+    void deleleParkingSlot(Long id);
 }
