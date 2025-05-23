@@ -35,9 +35,12 @@
                         </li>
                     </ul>
                 </div>
+                <div class="nav-item text-end" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/logout}">Đăng xuất</a>
+                </div> 
             </div>
         </nav>
-    </header>
+    </header> 
 
     <footer th:fragment="footer">
         <div class="mt-4 p-5 bg-primary text-white rounded">

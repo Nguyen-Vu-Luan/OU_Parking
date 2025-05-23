@@ -14,8 +14,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.context.annotation.Bean;
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
@@ -50,17 +48,7 @@ public class WebAppContextConfigs implements WebMvcConfigurer {
         registry.addFormatter(new ParkingSlotFormatter());
     }
     
-    @Bean
-    public Cloudinary cloudinary() {
-        Cloudinary cloudinary
-                = new Cloudinary(ObjectUtils.asMap(
-                        "cloud_name", "dgosettle",
-                        "api_key", "755285325749422",
-                        "api_secret", "-S4Uwmv5_B2ajn9_SrDhdXWh0_c",
-                        "secure", true));
-        
-        return cloudinary;
-    }  
+     
     
     @Bean
     public StandardServletMultipartResolver multipartResolver() {

@@ -66,7 +66,7 @@ public class ParkingLots implements Serializable {
     private Set<ParkingSlots> parkingSlotsSet;
     @Transient
     private MultipartFile file;
-    
+
     public ParkingLots() {
     }
 

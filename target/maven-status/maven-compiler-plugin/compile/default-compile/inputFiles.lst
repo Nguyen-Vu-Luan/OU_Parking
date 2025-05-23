@@ -1,5 +1,7 @@
 D:\OU_Parking\src\main\java\com\gr5\configs\DispatcherServletInit.java
 D:\OU_Parking\src\main\java\com\gr5\configs\HibernateConfig.java
+D:\OU_Parking\src\main\java\com\gr5\configs\SecurityWebApplicationInitializer.java
+D:\OU_Parking\src\main\java\com\gr5\configs\SpringSecurityConfig.java
 D:\OU_Parking\src\main\java\com\gr5\configs\ThymeleafConfig.java
 D:\OU_Parking\src\main\java\com\gr5\configs\WebAppContextConfigs.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ApiParkingLotController.java
@@ -8,6 +10,7 @@ D:\OU_Parking\src\main\java\com\gr5\controllers\IndexController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingLotController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingSlotController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\SlotController.java
+D:\OU_Parking\src\main\java\com\gr5\controllers\UserController.java
 D:\OU_Parking\src\main\java\com\gr5\formatters\ParkingLotFormatter.java
 D:\OU_Parking\src\main\java\com\gr5\formatters\ParkingSlotFormatter.java
 D:\OU_Parking\src\main\java\com\gr5\ou_parking\JakartaRestConfiguration.java
@@ -22,9 +25,13 @@ D:\OU_Parking\src\main\java\com\gr5\pojo\Users.java
 D:\OU_Parking\src\main\java\com\gr5\pojo\VehicleInfo.java
 D:\OU_Parking\src\main\java\com\gr5\repositories\impl\ParkingLotRepositoryImpl.java
 D:\OU_Parking\src\main\java\com\gr5\repositories\impl\ParkingSlotRepositoryImpl.java
+D:\OU_Parking\src\main\java\com\gr5\repositories\impl\UserRepositoryImpl.java
 D:\OU_Parking\src\main\java\com\gr5\repositories\ParkingLotRepository.java
 D:\OU_Parking\src\main\java\com\gr5\repositories\ParkingSlotRepository.java
+D:\OU_Parking\src\main\java\com\gr5\repositories\UserRepository.java
 D:\OU_Parking\src\main\java\com\gr5\services\impl\ParkingLotServiceImpl.java
 D:\OU_Parking\src\main\java\com\gr5\services\impl\ParkingSlotServiceImpl.java
+D:\OU_Parking\src\main\java\com\gr5\services\impl\UserServiceImpl.java
 D:\OU_Parking\src\main\java\com\gr5\services\ParkingLotService.java
 D:\OU_Parking\src\main\java\com\gr5\services\ParkingSlotService.java
+D:\OU_Parking\src\main\java\com\gr5\services\UserService.java
