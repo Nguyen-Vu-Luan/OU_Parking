@@ -13,6 +13,6 @@ import java.util.List;
  */
 public interface UserRepository {
     Users getUserByUsername(String username);
-//    Users addUser(Users u);
+    Users register(Users u);
 //    boolean authenticate(String username, String password);
 }

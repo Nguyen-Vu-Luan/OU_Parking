@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 /**
@@ -49,12 +51,18 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws
             Exception {
         http.csrf(c -> c.disable()).authorizeHttpRequests(requests
-                -> requests.requestMatchers("/", "/home").authenticated())
-                        .formLogin(form -> form.loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true)
-                        .failureUrl("/login?error=true").permitAll())
-                        .logout(logout -> logout.logoutSuccessUrl("/login").permitAll());//.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+                -> requests.requestMatchers("/", "/home").authenticated()
+                        .requestMatchers("/js/**").permitAll()
+                        .requestMatchers("/api/users").permitAll()
+                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/slot/**").permitAll()
+                        .requestMatchers("/parkingSlot/**").permitAll()
+                        .requestMatchers("/parkingLot/**").permitAll())
+                .formLogin(form -> form.loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/login?error=true").permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/login").permitAll());//.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
@@ -68,5 +76,10 @@ public class SpringSecurityConfig {
                         "secure", true));
 
         return cloudinary;
+    }
+    @Bean
+    @Order(0)
+    public StandardServletMultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 }

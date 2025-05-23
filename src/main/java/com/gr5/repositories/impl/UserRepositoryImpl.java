@@ -39,14 +39,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
 
-//    @Override
-//    public Users addUser(Users u) {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        s.persist(u);
-//        
-//        return u;
-//    }
-//
+    @Override
+    public Users register(Users u) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.persist(u);
+        s.refresh(u);
+        return u;
+    }
+
 //    @Override
 //    public boolean authenticate(String username, String password) {
 //        Users u = this.getUserByUsername(username);

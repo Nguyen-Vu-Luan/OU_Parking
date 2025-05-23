@@ -6,6 +6,7 @@ D:\OU_Parking\src\main\java\com\gr5\configs\ThymeleafConfig.java
 D:\OU_Parking\src\main\java\com\gr5\configs\WebAppContextConfigs.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ApiParkingLotController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ApiParkingSlotController.java
+D:\OU_Parking\src\main\java\com\gr5\controllers\ApiUserController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\IndexController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingLotController.java
 D:\OU_Parking\src\main\java\com\gr5\controllers\ParkingSlotController.java

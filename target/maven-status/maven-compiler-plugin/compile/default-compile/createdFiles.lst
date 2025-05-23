@@ -8,6 +8,7 @@ com\gr5\repositories\UserRepository.class
 com\gr5\repositories\impl\UserRepositoryImpl.class
 com\gr5\configs\HibernateConfig.class
 com\gr5\services\ParkingLotService.class
+com\gr5\controllers\ApiUserController.class
 com\gr5\configs\ThymeleafConfig.class
 com\gr5\pojo\VehicleInfo.class
 com\gr5\ou_parking\JakartaRestConfiguration.class

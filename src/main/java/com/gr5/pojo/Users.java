@@ -4,6 +4,7 @@
  */
 package com.gr5.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,11 +15,8 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 /**
@@ -35,7 +33,6 @@ import java.util.Set;
     @NamedQuery(name = "Users.findByPasswordHash", query = "SELECT u FROM Users u WHERE u.passwordHash = :passwordHash"),
     @NamedQuery(name = "Users.findByPhone", query = "SELECT u FROM Users u WHERE u.phone = :phone"),
     @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role"),
-    @NamedQuery(name = "Users.findByCreatedAt", query = "SELECT u FROM Users u WHERE u.createdAt = :createdAt"),
     @NamedQuery(name = "Users.findByAvatar", query = "SELECT u FROM Users u WHERE u.avatar = :avatar"),
     @NamedQuery(name = "Users.findByFirstName", query = "SELECT u FROM Users u WHERE u.firstName = :firstName"),
     @NamedQuery(name = "Users.findByLastName", query = "SELECT u FROM Users u WHERE u.lastName = :lastName")})
@@ -56,6 +53,7 @@ public class Users implements Serializable {
     private String email;
     @Size(max = 255)
     @Column(name = "password_hash")
+    @JsonIgnore
     private String passwordHash;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 20)
@@ -64,9 +62,6 @@ public class Users implements Serializable {
     @Size(max = 5)
     @Column(name = "role")
     private String role;
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
     @Size(max = 200)
     @Column(name = "avatar")
     private String avatar;
@@ -77,12 +72,16 @@ public class Users implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     @OneToMany(mappedBy = "userId")
+    @JsonIgnore
     private Set<Reservations> reservationsSet;
     @OneToMany(mappedBy = "userId")
+    @JsonIgnore
     private Set<Reviews> reviewsSet;
     @OneToMany(mappedBy = "userId")
+    @JsonIgnore
     private Set<Notifications> notificationsSet;
     @OneToMany(mappedBy = "userId")
+    @JsonIgnore
     private Set<VehicleInfo> vehicleInfoSet;
 
     public Users() {
@@ -138,14 +137,6 @@ public class Users implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public String getAvatar() {

@@ -19,6 +19,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
+import com.cloudinary.utils.ObjectUtils;
+import java.io.IOException;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  *
@@ -29,10 +33,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepo;
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-//    @Autowired
-//    private Cloudinary cloudinary;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private Cloudinary cloudinary;
 
     @Override
     public Users getUserByUsername(String username) {
@@ -53,29 +57,30 @@ public class UserServiceImpl implements UserService {
                 u.getUsername(), u.getPasswordHash(), authorities);
     }
 
-//    @Override
-//    public Users addUser(Map<String, String> params, MultipartFile avatar) {
-//        Users u = new Users();
-//        u.setFirstName(params.get("firstName"));
-//        u.setLastName(params.get("lastName"));
-//        u.setEmail(params.get("email"));
-//        u.setPhone(params.get("phone"));
-//        u.setUsername(params.get("username"));
-//        u.setPasswordHash(this.passwordEncoder.encode(params.get("password")));
-//        u.setRole("user");
-//        
-////        if (!avatar.isEmpty()) {
-////            try {
-////                Map res = cloudinary.uploader().upload(avatar.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
-////                u.setAvatar(res.get("secure_url").toString());
-////            } catch (IOException ex) {
-////                Logger.getLogger(ProductServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-////            }
-////        }
-//        
-//        return this.userRepo.addUser(u);
-//    }
-//
+    @Override
+    public Users register(Map<String, String> params, MultipartFile avatar) {
+        Users u = new Users();
+        u.setFirstName(params.get("firstName"));
+        u.setLastName(params.get("lastName"));
+        u.setEmail(params.get("email"));
+        u.setPhone(params.get("phone"));
+        u.setUsername(params.get("username"));
+        u.setPasswordHash(this.passwordEncoder.encode(params.get("passwordHash")));
+        u.setRole("user");
+        
+        if (!avatar.isEmpty()) {
+            try {
+                Map res = cloudinary.uploader().upload(avatar.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                u.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(ParkingLotServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return this.userRepo.register(u);
+    }
+
 //    @Override
 //    public boolean authenticate(String username, String password) {
 //        return this.userRepo.authenticate(username, password);
