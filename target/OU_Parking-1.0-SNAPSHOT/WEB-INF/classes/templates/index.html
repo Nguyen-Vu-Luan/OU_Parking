@@ -13,6 +13,19 @@
             <div class="mb-3 mt-3">
                 <input type="text" class="form-control" name="kw" placeholder="Tên bãi đỗ..." />
             </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3 mt-3">
+                        <input type="number" class="form-control" name="fromPrice" placeholder="Giá min..." />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3 mt-3">
+                        <input type="number" class="form-control" name="toPrice" placeholder="Giá max..." />
+                    </div>
+
+                </div>
+            </div>
             <div class="mb-3 mt-3">
                 <button class="btn btn-info" type="submit">Tìm kiếm</button>
             </div>
@@ -23,7 +36,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <!--                    <th></th>-->
+                    <th></th>
                     <th>Mã bãi đỗ</th>
                     <th>Tên bãi đỗ</th>
                     <th>Giá theo giờ</th>
@@ -33,9 +46,9 @@
             </thead>
             <tbody>
                 <tr th:each="pl: ${ParkingLots}">
-                    <!--                    <td>
-                                            <img th:src="${p.image}" width="200" />
-                                        </td>-->
+                    <td>
+                        <img th:src="${pl.image}" width="150" />
+                    </td>
                     <td th:text="${pl.id}"></td>
                     <td th:text="${pl.name}"></td>
                     <td th:text="${pl.pricePerHour + ' VNĐ'}"></td>

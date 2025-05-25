@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -37,7 +39,8 @@ public class ParkingLotController {
     }
     
     @PostMapping("/addpl")
-    public String addpl(@ModelAttribute(value = "ParkingLots") ParkingLots pl) {
+    public String add(@ModelAttribute ParkingLots pl, @RequestParam("file") MultipartFile file) {
+        pl.setFile(file);
         this.parkingLotService.addOrUpdateParkingLot(pl);
         return "redirect:/";
     }

@@ -47,10 +47,10 @@ public class ParkingSlotServiceImpl implements ParkingSlotService{
                         ObjectUtils.asMap("resource_type", "auto"));
                 p.setImage(res.get("secure_url").toString());
             } catch (IOException ex) {
-                Logger.getLogger(ParkingLotServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ParkingSlotServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        p.setImage("");
+        p.setImage("https://res.cloudinary.com/dgosettle/image/upload/v1748183276/h%C3%A3y_t%E1%BA%A1o_cho_t%C3%B4i_%E1%BA%A3nh_hi%E1%BB%83n_th%E1%BB%8B_c%E1%BB%99t_%C4%91%E1%BB%97_xe_c%C3%B3_t%C3%AAn_OU_Parking_h%C3%ACnh_%E1%BA%A3nh_gi%E1%BB%91ng_ch%E1%BB%97_%C4%91%E1%BB%97_xe_%C3%B4_t%C3%B4_trong_h%E1%BA%A7m_g%E1%BB%ADi_xe__a7lsau.png");
         return this.slotRepo.addOrUpdateParkingSlot(p);
     }
 

@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Quản lý người dùng</title>
+    <th:block th:replace="base :: bootstrap"></th:block>
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+
+    <main class="container">
+        <form th:action="@{/user}">
+            <div class="mb-3 mt-3">
+                <label for="parkingLotSelect">Tìm người dùng:</label>
+                <select class="form-control" name="parkinglotId" id="parkingLotSelect">
+                    <option value="0" th:selected="${selectedLotId == null or selectedLotId == 0}"> --Tất cả bãi đỗ-- </option>
+                    <option th:each="pl : ${ParkingLots}" th:value="${pl.id}" th:text="${pl.name}" th:selected="${pl.id == selectedLotId}"></option>
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-info" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
+        <hr  />  
+        <a th:href="@{/parkingSlot}" class="btn btn-info mt-2">Thêm chỗ đỗ</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <!--                    <th></th>-->
+                    <th>Mã chỗ đỗ</th>
+                    <th>Tên bãi đỗ</th>
+                    <th>Vị trí</th>
+                    <th>Tình trạng</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="psl: ${ParkingSlots}">
+                    <!--                    <td>
+                                            <img th:src="${p.image}" width="200" />
+                                        </td>-->
+                    <td th:text="${psl.id}"></td>
+                    <td th:text="${psl.lotId.name}"></td>
+                    <td th:text="${psl.slotNumber}"></td>
+                    <td th:text="${psl.status}"></td>
+                    <td class="text-end">
+                        <button class="btn btn-danger" 
+                                th:onclick="'deleteParkingSlot(\''+@{/api/slot/}+ '\',' +${psl.id}+')'">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <a th:href="@{'/parkingSlot/' + ${psl.id}}" class="btn btn-success">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div th:replace="base :: footer"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

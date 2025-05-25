@@ -21,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 import com.cloudinary.utils.ObjectUtils;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -37,6 +38,11 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private Cloudinary cloudinary;
+    
+    @Override
+    public List<Users> getUser() {
+        return this.userRepo.getUser();
+    }
 
     @Override
     public Users getUserByUsername(String username) {

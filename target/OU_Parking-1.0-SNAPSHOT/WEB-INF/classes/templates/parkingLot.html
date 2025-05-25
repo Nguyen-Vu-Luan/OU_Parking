@@ -37,7 +37,7 @@
                 <img th:if="${ParkingLots.id != null && ParkingLots.image != null}" th:src="${ParkingLots.image}" width="200" />
             </div>
             
-            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" class="form-control" th:field="*{id}" />
             <input type="hidden" class="form-control" th:field="*{image}"  />
             <button type="submit" class="btn btn-primary" th:if="${ParkingLots.id == null}">Thêm bãi đỗ</button>
             <button type="submit" class="btn btn-primary" th:unless="${ParkingLots.id == null}">Cập nhật bãi đỗ</button>

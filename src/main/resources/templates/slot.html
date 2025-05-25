@@ -25,7 +25,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <!--                    <th></th>-->
+                    <th></th>
                     <th>Mã chỗ đỗ</th>
                     <th>Tên bãi đỗ</th>
                     <th>Vị trí</th>
@@ -35,9 +35,9 @@
             </thead>
             <tbody>
                 <tr th:each="psl: ${ParkingSlots}">
-                    <!--                    <td>
-                                            <img th:src="${p.image}" width="200" />
-                                        </td>-->
+                    <td>
+                        <img th:src="${psl.image}" width="100" />
+                    </td>
                     <td th:text="${psl.id}"></td>
                     <td th:text="${psl.lotId.name}"></td>
                     <td th:text="${psl.slotNumber}"></td>

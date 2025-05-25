@@ -4,6 +4,8 @@
  */
 package com.gr5.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.gr5.formatters.ParkingLotFormatter;
 import com.gr5.formatters.ParkingSlotFormatter;
 import org.springframework.context.annotation.ComponentScan;
@@ -48,7 +50,17 @@ public class WebAppContextConfigs implements WebMvcConfigurer {
         registry.addFormatter(new ParkingSlotFormatter());
     }
     
-     
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary
+                = new Cloudinary(ObjectUtils.asMap(
+                        "cloud_name", "dgosettle",
+                        "api_key", "755285325749422",
+                        "api_secret", "-S4Uwmv5_B2ajn9_SrDhdXWh0_c",
+                        "secure", true));
+
+        return cloudinary;
+    }     
     
     @Bean
     public StandardServletMultipartResolver multipartResolver() {

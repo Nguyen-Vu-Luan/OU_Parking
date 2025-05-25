@@ -6,6 +6,7 @@ package com.gr5.services;
 
 import com.gr5.pojo.ParkingLots;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.List;
 
 public interface ParkingLotService {
     List<ParkingLots> getLots();
-    List<ParkingLots> findParkingLotsByKeyWord(String kw);
+    List<ParkingLots> findParkingLotsByKeyWord(Map<String, String> params);
     ParkingLots addOrUpdateParkingLot(ParkingLots p);
     ParkingLots getParkingLotById(Long id);
     void deleleParkingLot(Long id);

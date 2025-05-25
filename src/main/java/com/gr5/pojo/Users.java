@@ -4,7 +4,6 @@
  */
 package com.gr5.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -53,7 +52,6 @@ public class Users implements Serializable {
     private String email;
     @Size(max = 255)
     @Column(name = "password_hash")
-    @JsonIgnore
     private String passwordHash;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 20)
@@ -72,16 +70,12 @@ public class Users implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     @OneToMany(mappedBy = "userId")
-    @JsonIgnore
     private Set<Reservations> reservationsSet;
     @OneToMany(mappedBy = "userId")
-    @JsonIgnore
     private Set<Reviews> reviewsSet;
     @OneToMany(mappedBy = "userId")
-    @JsonIgnore
     private Set<Notifications> notificationsSet;
     @OneToMany(mappedBy = "userId")
-    @JsonIgnore
     private Set<VehicleInfo> vehicleInfoSet;
 
     public Users() {

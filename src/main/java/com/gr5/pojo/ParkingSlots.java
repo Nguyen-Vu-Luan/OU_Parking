@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
@@ -32,8 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "ParkingSlots.findAll", query = "SELECT p FROM ParkingSlots p"),
     @NamedQuery(name = "ParkingSlots.findById", query = "SELECT p FROM ParkingSlots p WHERE p.id = :id"),
     @NamedQuery(name = "ParkingSlots.findBySlotNumber", query = "SELECT p FROM ParkingSlots p WHERE p.slotNumber = :slotNumber"),
-    @NamedQuery(name = "ParkingSlots.findByStatus", query = "SELECT p FROM ParkingSlots p WHERE p.status = :status"),
-    @NamedQuery(name = "ParkingSlots.findByImage", query = "SELECT p FROM ParkingSlots p WHERE p.image = :image")})
+    @NamedQuery(name = "ParkingSlots.findByStatus", query = "SELECT p FROM ParkingSlots p WHERE p.status = :status")})
 public class ParkingSlots implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,7 +48,8 @@ public class ParkingSlots implements Serializable {
     @Size(max = 11)
     @Column(name = "status")
     private String status;
-    @Size(max = 255)
+    @Lob
+    @Size(max = 65535)
     @Column(name = "image")
     private String image;
     @OneToMany(mappedBy = "slotId")
